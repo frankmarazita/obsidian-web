@@ -2,6 +2,10 @@
 
 A browser extension that allows you to quickly send the current webpage URL to your Obsidian notes.
 
+## Who is this for?
+
+This extension is designed for anyone who uses Obsidian and the [Obsidian Local REST API](https://github.com/coddingtonbear/obsidian-local-rest-api)plugin to manage their notes, and wants a simple way to save URLs from their browser directly into their Obsidian vault.
+
 ## Features
 
 - **One-click URL sending**: Send the current webpage URL directly to your configured Obsidian note
@@ -40,12 +44,16 @@ For development with hot reload:
    - **Target Note**: The note file to send URLs to (e.g., `DUMP.md`)
 4. Click "Save" to store your configuration
 
+![Configuration Screen](assets/example-configure.png)
+
 ## Usage
 
 1. Navigate to any webpage you want to save
 2. Click the extension icon
 3. Click "Send to [your configured note]"
 4. The current webpage URL will be sent to your configured Obsidian note
+
+![Main Interface](assets/example-send.png)
 
 ## Requirements
 
