@@ -4,7 +4,7 @@ A browser extension that allows you to quickly send the current webpage URL to y
 
 ## Who is this for?
 
-This extension is designed for anyone who uses Obsidian and the [Obsidian Local REST API](https://github.com/coddingtonbear/obsidian-local-rest-api)plugin to manage their notes, and wants a simple way to save URLs from their browser directly into their Obsidian vault.
+This extension is designed for anyone who uses Obsidian and the [Obsidian Local REST API](https://github.com/coddingtonbear/obsidian-local-rest-api) plugin to manage their notes, and wants a simple way to save URLs from their browser directly into their Obsidian vault.
 
 ## Features
 
