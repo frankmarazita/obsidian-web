@@ -126,14 +126,14 @@ export default function Popup() {
 
   if (showConfig) {
     return (
-      <div className="p-4 w-80">
-        <h3 className="text-lg font-bold mb-4">Configuration</h3>
+      <div className="p-4 w-80 bg-gray-900 text-gray-100">
+        <h3 className="text-lg font-medium mb-4 text-gray-100">Configuration</h3>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Endpoint URL</label>
+          <label className="block text-sm font-medium mb-1 text-gray-300">Endpoint URL</label>
           <input
             type="text"
-            className="w-full p-2 border rounded text-sm"
+            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-sm text-gray-100 placeholder-gray-400 focus:border-purple-500 focus:outline-none"
             placeholder="http://localhost:27123"
             value={config.endpoint}
             onChange={(e) => setConfig({ ...config, endpoint: e.target.value })}
@@ -141,12 +141,12 @@ export default function Popup() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">
+          <label className="block text-sm font-medium mb-1 text-gray-300">
             Auth Token (optional)
           </label>
           <input
             type="password"
-            className="w-full p-2 border rounded text-sm"
+            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-sm text-gray-100 placeholder-gray-400 focus:border-purple-500 focus:outline-none"
             placeholder="Bearer token"
             value={config.token}
             onChange={(e) => setConfig({ ...config, token: e.target.value })}
@@ -154,10 +154,10 @@ export default function Popup() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Target Note</label>
+          <label className="block text-sm font-medium mb-1 text-gray-300">Target Note</label>
           <input
             type="text"
-            className="w-full p-2 border rounded text-sm"
+            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-sm text-gray-100 placeholder-gray-400 focus:border-purple-500 focus:outline-none"
             placeholder="File.md"
             value={config.targetNote}
             onChange={(e) =>
@@ -168,13 +168,13 @@ export default function Popup() {
 
         <div className="flex gap-2">
           <button
-            className="bg-blue-500 text-white px-4 py-2 rounded text-sm"
+            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded text-sm transition-colors"
             onClick={handleSaveConfig}
           >
             Save
           </button>
           <button
-            className="bg-gray-500 text-white px-4 py-2 rounded text-sm"
+            className="bg-gray-700 hover:bg-gray-600 text-gray-100 px-4 py-2 rounded text-sm transition-colors"
             onClick={() => setShowConfig(false)}
           >
             Cancel
@@ -185,10 +185,10 @@ export default function Popup() {
   }
 
   return (
-    <div className="p-4 w-64">
+    <div className="p-4 w-64 bg-gray-900 text-gray-100">
       <div className="flex flex-col gap-3">
         <button
-          className={`bg-blue-500 text-white font-bold py-2 px-4 rounded ${
+          className={`bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded ${
             loading ? "opacity-50 cursor-not-allowed" : ""
           }`}
           disabled={loading}
@@ -201,18 +201,18 @@ export default function Popup() {
         </button>
 
         <button
-          className="bg-gray-500 text-white py-1 px-3 rounded text-sm"
+          className="bg-gray-700 hover:bg-gray-600 text-gray-100 py-1 px-3 rounded text-sm transition-colors"
           onClick={() => setShowConfig(true)}
         >
           Configure
         </button>
 
         {error && (
-          <div className="text-red-600 text-sm text-center">{error}</div>
+          <div className="text-red-400 text-sm text-center bg-red-900/20 p-2 rounded border border-red-800">{error}</div>
         )}
 
         {success && (
-          <div className="text-green-600 text-sm text-center">
+          <div className="text-green-400 text-sm text-center bg-green-900/20 p-2 rounded border border-green-800">
             URL sent successfully!
           </div>
         )}

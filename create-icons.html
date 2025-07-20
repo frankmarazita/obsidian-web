@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Obsidian Web Icons</title>
+</head>
+<body>
+    <h2>Obsidian Web Extension Icons</h2>
+    
+    <!-- 32x32 Icon -->
+    <div>
+        <h3>32x32 Icon</h3>
+        <canvas id="icon32" width="32" height="32" style="border: 1px solid #ccc; image-rendering: pixelated; width: 128px; height: 128px;"></canvas>
+        <br><button onclick="download32()">Download 32x32</button>
+    </div>
+    
+    <!-- 128x128 Icon -->
+    <div>
+        <h3>128x128 Icon</h3>
+        <canvas id="icon128" width="128" height="128" style="border: 1px solid #ccc; image-rendering: pixelated; width: 256px; height: 256px;"></canvas>
+        <br><button onclick="download128()">Download 128x128</button>
+    </div>
+
+    <script>
+        function createIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // Background - Obsidian purple gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#7c3aed'); // Obsidian purple (lighter)
+            gradient.addColorStop(1, '#5b21b6'); // Obsidian purple (darker)
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Round corners
+            ctx.globalCompositeOperation = 'destination-in';
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, size * 0.15);
+            ctx.fill();
+            ctx.globalCompositeOperation = 'source-over';
+            
+            const center = size / 2;
+            
+            // Clipboard main body
+            const clipWidth = size * 0.5;
+            const clipHeight = size * 0.6;
+            const clipX = center - clipWidth / 2;
+            const clipY = center - clipHeight / 2 + size * 0.01; // Moved down slightly
+            
+            // Clipboard background
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(clipX, clipY, clipWidth, clipHeight);
+            
+            // Clipboard border
+            ctx.strokeStyle = '#e5e7eb'; // gray-200
+            ctx.lineWidth = size * 0.02;
+            ctx.strokeRect(clipX, clipY, clipWidth, clipHeight);
+            
+            // Clipboard clip at top
+            const clipTabWidth = size * 0.25;
+            const clipTabHeight = size * 0.08;
+            const clipTabX = center - clipTabWidth / 2;
+            const clipTabY = clipY - clipTabHeight / 2;
+            
+            ctx.fillStyle = '#9ca3af'; // gray-400
+            ctx.fillRect(clipTabX, clipTabY, clipTabWidth, clipTabHeight);
+            ctx.strokeStyle = '#6b7280'; // gray-500
+            ctx.lineWidth = size * 0.015;
+            ctx.strokeRect(clipTabX, clipTabY, clipTabWidth, clipTabHeight);
+            
+            // Lines on clipboard (representing text/links)
+            ctx.strokeStyle = '#7c3aed'; // Obsidian purple
+            ctx.lineWidth = size * 0.025;
+            
+            const lineStart = clipX + size * 0.08;
+            const lineEnd = clipX + clipWidth - size * 0.08;
+            const lineSpacing = size * 0.08;
+            const firstLineY = clipY + size * 0.12;
+            
+            // First line (longer - like a URL)
+            ctx.beginPath();
+            ctx.moveTo(lineStart, firstLineY);
+            ctx.lineTo(lineEnd, firstLineY);
+            ctx.stroke();
+            
+            // Second line (shorter)
+            ctx.beginPath();
+            ctx.moveTo(lineStart, firstLineY + lineSpacing);
+            ctx.lineTo(lineEnd - size * 0.08, firstLineY + lineSpacing);
+            ctx.stroke();
+            
+            // Third line (medium)
+            ctx.beginPath();
+            ctx.moveTo(lineStart, firstLineY + lineSpacing * 2);
+            ctx.lineTo(lineEnd - size * 0.04, firstLineY + lineSpacing * 2);
+            ctx.stroke();
+            
+            // Small web link icon in corner
+            const linkSize = size * 0.15;
+            const linkX = clipX + clipWidth - linkSize - size * 0.05;
+            const linkY = clipY + clipHeight - linkSize - size * 0.05;
+            
+            ctx.strokeStyle = '#10b981'; // emerald-500
+            ctx.lineWidth = size * 0.03;
+            ctx.beginPath();
+            ctx.arc(linkX + linkSize * 0.5, linkY + linkSize * 0.5, linkSize * 0.3, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Chain link
+            ctx.beginPath();
+            ctx.moveTo(linkX + linkSize * 0.2, linkY + linkSize * 0.5);
+            ctx.lineTo(linkX + linkSize * 0.35, linkY + linkSize * 0.5);
+            ctx.stroke();
+        }
+        
+        function download32() {
+            const canvas = document.getElementById('icon32');
+            const link = document.createElement('a');
+            link.download = 'icon-32.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        function download128() {
+            const canvas = document.getElementById('icon128');
+            const link = document.createElement('a');
+            link.download = 'icon-128.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Generate icons on load
+        window.onload = function() {
+            createIcon(document.getElementById('icon32'), 32);
+            createIcon(document.getElementById('icon128'), 128);
+        }
+    </script>
+</body>
+</html>

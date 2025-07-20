@@ -6,7 +6,7 @@ A browser extension that allows you to quickly send the current webpage URL to y
 
 - **One-click URL sending**: Send the current webpage URL directly to your configured Obsidian note
 - **Configurable endpoint**: Set your own Obsidian REST API endpoint
-- **Flexible authentication**: Optional bearer token support for secured endpoints  
+- **Flexible authentication**: Optional bearer token support for secured endpoints
 - **Customizable target note**: Choose which note to send URLs to (defaults to `File.md`)
 - **Cross-browser support**: Works on both Chrome and Firefox
 
@@ -26,6 +26,7 @@ A browser extension that allows you to quickly send the current webpage URL to y
 ### Development Mode
 
 For development with hot reload:
+
 - Chrome: `npm run dev:chrome`
 - Firefox: `npm run dev:firefox`
 
@@ -54,6 +55,7 @@ For development with hot reload:
 ## Permissions
 
 The extension requires the following permissions:
+
 - `activeTab`: To get the current webpage URL
 - `storage`: To save your configuration settings
 - `host_permissions`: To make requests to your configured Obsidian endpoint
@@ -61,6 +63,7 @@ The extension requires the following permissions:
 ## Technical Details
 
 Built with:
+
 - React 19
 - TypeScript
 - Tailwind CSS 4
